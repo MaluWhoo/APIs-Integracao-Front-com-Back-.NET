@@ -70,6 +70,7 @@ src/app/
 
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&color=C587A7&height=2&width=100%" />
+
 <a href="../README.md">Voltar ao README principal</a>
 <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:FFB3DE,100:000000&height=80&section=footer&animation=fadeIn" />
 </div>
