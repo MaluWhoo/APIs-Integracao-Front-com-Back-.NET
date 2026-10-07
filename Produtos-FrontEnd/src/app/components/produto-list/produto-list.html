@@ -1,0 +1,176 @@
+<main class="container">
+    <header>
+        <div class="head">
+            <div class="icon">🛍</div>
+            <h1>Produtos</h1>
+        </div>
+        <p>Gerencie o catálogo de produtos — consulte, adicione, edite e remova itens.</p>
+    </header>
+
+    <section class="buscar-produto">
+        <h2>Buscar produto por ID</h2>
+        <div class="section-body">
+            <input type="number" name="idBusca" min="1" [(ngModel)]="idBusca" placeholder="Ex.: 3">
+            <button type="submit" (click)="buscarProdutoPorId()" class="btn-buscar">Buscar</button>
+        </div>
+
+        <!-- API VAZIA & NÃO ENCONTRADO  -->
+        @if (produtos().length === 0) {
+        <div class="msg-not-fond">
+            <span></span>Nenhum produto cadastrado.
+        </div>
+        } @else if(erroBuscar()) {
+        <div class="msg-not-fond">
+            <span>⚠</span>Produto não encontrado com esse ID. Insirá um ID válido.
+        </div>
+        }
+
+        <!-- ENCONTRADO   -->
+        @if (produtoEncontrado(); as produto) {
+        <div class="msg-found">
+
+            @if (!(editandoIdBusca === produto.id)) {
+            <div class="msg-found-body">
+                <div class="produto">
+                    <span>{{ produto.nome }}</span>
+                    <div class="produto-conteudo">
+                        <span>ID {{ produto.id }}</span>
+                        <span>R$ {{ produto.preco | number: '1.2-2' }}</span>
+                        <span>Qtd: {{ produto.quantidade }}</span>
+                    </div>
+                </div>
+                <div class="botoes">
+                    <button type="button" class="btn-editar" (click)="editarProdutoDaBusca(produto)">Editar</button>
+                    <button type="button" class="btn-remover" (click)="removerProduto(produto.id)">Remover</button>
+                </div>
+            </div>
+            }
+
+            @if (editandoIdBusca === produto.id) {
+            <div class="editar-produto">
+                <div class="inputs">
+                    <input aria-label="Nome do produto" type="text" [(ngModel)]="editNomeBusca" placeholder="Nome">
+                    <input aria-label="Preço do produto" type="number" min="0" step="0.01" [(ngModel)]="editPrecoBusca"
+                        placeholder="Preço">
+                    <input aria-label="Quantidade do produto" type="number" min="0" [(ngModel)]="editQuantidadeBusca"
+                        placeholder="Quantidade">
+                </div>
+                <div class="botoes">
+                    <button type="button" (click)="salvarEdicaoBuscar()" [disabled]="salvando()">Salvar</button>
+                    <button type="button" class="btn-cancelar" (click)="cancelarEdicaoBusca()">Cancelar</button>
+                </div>
+            </div>
+            }
+            @if (erroEdicao()) {
+            <p class="mgs-error">{{ erroEdicao() }}</p>
+            }
+        </div>
+        }
+    </section>
+
+    <section class="adicionar-produto">
+        <h2>Adicionar novo produto</h2>
+        <form (ngSubmit)="adicionarProduto()">
+            <div class="section-body">
+                <div>
+                    <label for="nome">Nome</label>
+                    <input type="text" name="nome" [(ngModel)]="novoNome" placeholder="Ex.: Vaso Cerâmico">
+                </div>
+                <div>
+                    <label for="preco">Preço (R$)</label>
+                    <input type="number" name="preco" min="0" step="0.01" [(ngModel)]="novoPreco" placeholder="0,00">
+                </div>
+                <div>
+                    <label for="quantidade">Quantidade</label>
+                    <input type="number" name="quantidade" min="1" [(ngModel)]="novoQuantidade" placeholder="0">
+                </div>
+            </div>
+            @if (erroAdicionar()) {
+                <p class="mgs-error">{{ erroAdicionar() }}</p>
+            }
+            <button class="btn-acao" type="submit" [disabled]="salvando()">+ Adicionar</button>
+        </form>
+    </section>
+
+    <section class="lista-de-produtos">
+        <div class="lista-de-produtos-body">
+            <div class="lista-de-produtos-header">
+                <h2>Lista de Produtos</h2>
+            </div>
+
+            <div class="tabela">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Preço</th>
+                            <th>Quantidade</th>
+                            <th class="acoes">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (produto of produtos(); track produto.id) {
+                        <tr [class.editando-na-tabela]="editandoId === produto.id">
+                            @if (editandoId === produto.id) {
+                            <td><span class="id">{{ produto.id }}</span></td>
+                            <td class="nome">
+                                <input aria-label="Nome do produto" type="text" [(ngModel)]="editNome"
+                                    placeholder="Nome">
+                            </td>
+                            <td class="preco">
+                                <input aria-label="Preço do produto" type="number" min="0" step="0.01"
+                                    [(ngModel)]="editPreco" placeholder="Preço">
+                            </td>
+                            <td class="quantidade">
+                                <input aria-label="Quantidade do produto" type="number" min="0"
+                                    [(ngModel)]="editQuantidade" placeholder="Quantidade">
+                            </td>
+                            <td>
+                                <div class="btn-acoes">
+                                    <button type="button" (click)="salvarEdicao()"
+                                        [disabled]="salvando()">Salvar</button>
+                                    <button type="button" class="btn-cancelar"
+                                        (click)="cancelarEdicao()">Cancelar</button>
+                                </div>
+                            </td>
+                            <!-- <td>
+                                <div class="editar-produto">
+                                    <input aria-label="Nome do produto" type="text" [(ngModel)]="editNome" placeholder="Nome">
+                                    <input aria-label="Preço do produto" type="number" min="0" step="0.01" [(ngModel)]="editPreco" placeholder="Preço">
+                                    <input aria-label="Quantidade do produto" type="number" min="0" [(ngModel)]="editQuantidade" placeholder="Quantidade">
+                                    <div class="botoes">
+                                        <button type="button" (click)="salvarEdicao()" [disabled]="salvando()">Salvar</button>
+                                        <button type="button" class="btn-cancelar" (click)="cancelarEdicao()">Cancelar</button>
+                                    </div>
+                                </div>
+                            </td> -->
+                            } @else {
+                            <td><span class="id">{{ produto.id }}</span></td>
+                            <td class="nome">{{ produto.nome }}</td>
+                            <td class="preco">R$ {{ produto.preco | number: '1.2-2' }}</td>
+                            <td class="quantidade">{{ produto.quantidade }}</td>
+                            <td>
+                                <div class="btn-acoes">
+                                    <button type="button" class="btn-editar"
+                                        (click)="editarProduto(produto)">Editar</button>
+                                    <button type="button" class="btn-remover"
+                                        (click)="removerProduto(produto.id)">Remover</button>
+                                </div>
+                            </td>
+                            }
+                        </tr>
+                        }
+                        @if (erroEdicao()) {
+                            <p class="mgs-error">{{ erroEdicao() }}</p>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tabela-footer">
+                <p>{{ produtos().length }} produtos cadastrados</p>
+            </div>
+        </div>
+    </section>
+</main>
