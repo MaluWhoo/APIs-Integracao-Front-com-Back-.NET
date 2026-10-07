@@ -25,6 +25,12 @@ O repositório reúne as duas aplicações:
 | [`Produtos-FrontEnd`](Produtos-FrontEnd/README.md) | Interface Angular e chamadas HTTP para a API |
 | [`Produtos-BackEnd`](Produtos-BackEnd/README.md) | API .NET, operações CRUD e persistência SQLite |
 
+## Prévia
+
+<p align="center">
+  <img src="Screenshot.jpeg" alt="Tela da aplicação de produtos" width="100%">
+</p>
+
 ## Funcionalidades
 
 - Listar produtos cadastrados.
