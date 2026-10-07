@@ -1,6 +1,6 @@
 <div align="center">
 
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&amp;color=0:000000,100:FFB3DE&amp;height=130&amp;section=header&amp;text=Integra%C3%A7%C3%A3o%20Front%20%26%20Back&amp;fontSize=30&amp;fontColor=ffffff&amp;fontAlignY=38&amp;animation=fadeIn" />
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&amp;color=0:000000,100:FFB3DE&amp;height=90&amp;section=header&amp;animation=fadeIn" />
 
 ### Aplicação de cadastro de produtos com Angular, ASP.NET Core e SQLite
 
