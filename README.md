@@ -1,6 +1,6 @@
 <div align="center">
 
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,100:FFB3DE&height=130&section=header&text=Integra%C3%A7%C3%A3o%20Front%20%26%20Back&fontSize=30&fontColor=ffffff&fontAlignY=38&animation=fadeIn" />
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&amp;color=0:000000,100:FFB3DE&amp;height=130&amp;section=header&amp;text=Integra%C3%A7%C3%A3o%20Front%20%26%20Back&amp;fontSize=30&amp;fontColor=ffffff&amp;fontAlignY=38&amp;animation=fadeIn" />
 
 ### Aplicação de cadastro de produtos com Angular, ASP.NET Core e SQLite
 
@@ -8,7 +8,7 @@
 
 ![.NET 10](https://img.shields.io/badge/.NET-10-0f172a?style=flat-square&logo=dotnet&logoColor=C587A7)
 ![C#](https://img.shields.io/badge/C%23-0f172a?style=flat-square&logo=csharp&logoColor=C587A7)
-![Angular](https://img.shields.io/badge/Angular-22-0f172a?style=flat-square&logo=angular&logoColor=FFB3DE)
+![Angular](https://img.shields.io/badge/Angular-0f172a?style=flat-square&logo=angular&logoColor=FFB3DE)
 ![TypeScript](https://img.shields.io/badge/TypeScript-0f172a?style=flat-square&logo=typescript&logoColor=FFB3DE)
 ![SQLite](https://img.shields.io/badge/SQLite-0f172a?style=flat-square&logo=sqlite&logoColor=C587A7)
 
