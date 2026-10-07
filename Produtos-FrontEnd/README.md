@@ -1,59 +1,75 @@
-# ProdutosFrontEnd
+<div align="center">
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.8.
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,100:FFB3DE&height=120&section=header&text=Produtos%20Front-End&fontSize=32&fontColor=ffffff&fontAlignY=40&animation=fadeIn" />
 
-## Development server
+### Interface Angular para gerenciamento de produtos
 
-To start a local development server, run:
+![Angular 22](https://img.shields.io/badge/Angular-22-0f172a?style=flat-square&logo=angular&logoColor=FFB3DE)
+![TypeScript](https://img.shields.io/badge/TypeScript-0f172a?style=flat-square&logo=typescript&logoColor=C587A7)
+![RxJS](https://img.shields.io/badge/RxJS-0f172a?style=flat-square&logo=reactivex&logoColor=FFB3DE)
 
-```bash
-ng serve
-```
+<img src="https://capsule-render.vercel.app/api?type=rect&color=C587A7&height=2&width=100%" />
+</div>
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Sobre
 
-## Code scaffolding
+Aplicação Angular que consome a [API de produtos](../Produtos-BackEnd/README.md) do projeto. A interface permite listar, consultar, adicionar, editar e remover produtos por meio de chamadas HTTP.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Funcionalidades
 
-```bash
-ng generate component component-name
-```
+- Exibir a lista de produtos.
+- Buscar um produto pelo ID.
+- Adicionar produto com nome, preço e quantidade.
+- Editar os dados de um produto.
+- Remover produto.
+- Exibir mensagens de validação e de erro nas operações.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Tecnologias
 
-```bash
-ng generate --help
-```
+- Angular 22 e TypeScript.
+- Angular HttpClient e RxJS para integração com a API.
+- Formulários reativos.
 
-## Building
+## Requisitos
 
-To build the project run:
+- Node.js e npm.
+- API do projeto em execução em `http://localhost:5027`.
 
-```bash
-ng build
-```
+## Executar localmente
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+Na pasta `Produtos-FrontEnd`:
 
 ```bash
-ng e2e
+npm install
+npm start
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Abra [`http://localhost:4200`](http://localhost:4200). O comando `npm start` executa o script `ng serve` definido em `package.json`.
 
-## Additional Resources
+Para gerar a versão de produção:
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+npm run build
+```
+
+## Integração com a API
+
+O serviço de produtos está em `src/app/services/produto.ts` e usa a URL base `http://localhost:5027/api/produto`. A API permite chamadas CORS a partir de `http://localhost:4200`.
+
+Se a API estiver usando outra porta, atualize `apiUrl` no serviço. A API e o front-end precisam estar rodando ao mesmo tempo para listar ou alterar produtos.
+
+## Estrutura
+
+```text
+src/app/
+├── components/produto-list/  Tela e operações de produtos
+├── services/                 Chamadas HTTP
+├── app.config.ts             Configuração da aplicação
+└── app.routes.ts             Rotas Angular
+```
+
+<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=C587A7&height=2&width=100%" />
+<a href="../README.md">Voltar ao README principal</a>
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:FFB3DE,100:000000&height=80&section=footer&animation=fadeIn" />
+</div>
